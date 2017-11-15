@@ -1,0 +1,70 @@
+<html>
+<head>
+<link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet" />
+
+<style>body{padding-top:60px;}</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed"
+     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+     aria-controls="navbar">
+       <span class="sr-only">Toggle navigation</span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href=http://localhost:5000/>ProjectName</a>
+</div>
+
+<div id="navbar" class="collapse navbar-collapse">
+<ul class="nav navbar-nav">
+  <li class="active"><a href="#">Room 1</a></li>
+  <li><a href="#room1">Room 2</a></li>
+  <li><a href="#room2">Room 3</a></li>
+</ul>
+</div>
+</nav>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+<script src
+="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	var socket = io.connect({{page|safe}});
+	socket.on('connect',function(){
+	data = ['User has connected',""];
+	socket.send(data);
+	 });
+
+	socket.on('message',function(data){
+	console.log(data)
+	$("#messages").append('<li>'+data[1]+data[0]+'</li>');
+	});
+
+	$('#sendbtn').click('click',function(){
+	usr = $('#usrname').val()+': ';
+	data = [$('#myMessage').val(),usr];
+
+	socket.send(data);
+	$('#usrname').hide();
+	$('#myMessage').val('');
+	});
+});
+
+</script>
+
+<div class="container">
+<ul id="messages"></ul>
+<input type="text" id="usrname">
+<input type="text" id="myMessage">
+<button id="sendbtn">Send</button>
+</div>
+
+</body>
+</html>
