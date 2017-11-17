@@ -1,25 +1,29 @@
 <html>
 <head>
 
-<link rel="stlyesheet" type="text/css" href="../static/css/main.css">
+<link href="{{ url_for('static', filename='css/main.css')}}" rel="stylesheet" />
 </head>
 <body>
-<h1 id ="maintitle"> This is the title</h1>
+<h1 id ="maintitle">Lend An Ear!</h1>
+<p>this is some text explaining that the site is for
+   discussing and getting help with problems</p>
  
+
+<div id="menu">
 <table id="mainmenu">
 <tr>
-<td>Room 1</td>
-<td>Room 2</td>
-<td>Room 3</td>
+<td><a href={{url_for('anxiety')}}>Anxiety</a></td>
+<td><a href={{url_for('depression')}}>Depression</a></td>
+<td><a href={{url_for('lgbt')}}>LGBT</a></td>
 </tr>
 
 <tr>
-<td>Room 4</td>
-<td>Room 5</td>
-<td>Room 6</td>
+<td><a href={{url_for('relationships')}}>Relationships</a></td>
+<td><a href={{url_for('other1')}}>Other1</a></td>
+<td><a href={{url_for('other2')}}>Other2</a></td>
 </tr>
 </table>
-
+</div>
 
 </body>
 

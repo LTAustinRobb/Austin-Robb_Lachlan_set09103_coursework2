@@ -1,9 +1,28 @@
-h1{
+body{
+background-color:grey;}
 
-color:red;
+h1{
 text-align:center;
 }
-
+p{
+text-align:center
+}
 #mainmenu{
 text-align:center;
+margin:auto;
+}
+
+#menu{
+text-align:center;
+margin:auto;
+width:50%;
+}
+
+table{
+border-collapse:collapse;
+}
+
+td{
+border: 1px solid black;
+padding:20px;
 }
