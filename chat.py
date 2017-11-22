@@ -2,8 +2,6 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, send
 
 app = Flask(__name__)
-#secret key- learn this?
-app.config['SECRET_KEY'] = 'secret'
 socketio = SocketIO(app)
 
 @app.route('/')
@@ -12,27 +10,27 @@ def main():
 
 @app.route('/anxiety')
 def anxiety():
-  return render_template('test.html',page="'/anxiety'")
+  return render_template('test.html',page="'/anxiety'",title="Anxiety")
 
 @app.route('/depression')
 def depression():
-  return render_template('test.html',page="'/depression'")
+  return render_template('test.html',page="'/depression'",title="Depression")
 
 @app.route('/lgbt')
 def lgbt():
-  return render_template('test.html',page="'/lgbt'")
+  return render_template('test.html',page="'/lgbt'",title="LGBT")
 
 @app.route('/relationships')
 def relationships():
-  return render_template('test.html',page="'/relationships'")
+  return render_template('test.html',page="'/relationships'",title="Relationships")
 
-@app.route('/other1')
-def other1():
-  return render_template('test.html',page="'/other1'")
+@app.route('/stress')
+def stress():
+  return render_template('test.html',page="'/stress'",title="Stress")
 
-@app.route('/other2')
-def other2():
-  return render_template('test.html',page="'/other2'")
+@app.route('/offtopic')
+def offtopic():
+  return render_template('test.html',page="'/offtopic'",title="Off Topic")
 
 
 
